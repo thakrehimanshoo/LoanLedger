@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { ThemeProvider } from './src/contexts/ThemeContext';
 import { AuthProvider } from './src/contexts/AuthContextLocal';
 import AppNavigatorLocal from './src/navigation/AppNavigatorLocal';
+import ErrorBoundary from './src/components/common/ErrorBoundary';
 
 /**
  * LoanLedger - P2P Community Lending Record-Keeper
@@ -13,11 +14,13 @@ import AppNavigatorLocal from './src/navigation/AppNavigatorLocal';
  */
 export default function App() {
   return (
-    <ThemeProvider>
-      <AuthProvider>
-        <StatusBar style="auto" />
-        <AppNavigatorLocal />
-      </AuthProvider>
-    </ThemeProvider>
+    <ErrorBoundary>
+      <ThemeProvider>
+        <AuthProvider>
+          <StatusBar style="auto" />
+          <AppNavigatorLocal />
+        </AuthProvider>
+      </ThemeProvider>
+    </ErrorBoundary>
   );
 }
