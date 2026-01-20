@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../../contexts/ThemeContext';
-import { useAuth } from '../../contexts/AuthContext';
-import useFirebase from '../../hooks/useFirebase';
+import { useAuth } from '../../contexts/AuthContextLocal';
+import useLocalStorage from '../../hooks/useLocalStorage';
 import Card from '../../components/common/Card';
 import Button from '../../components/common/Button';
 import LegalDisclaimer from '../../components/common/LegalDisclaimer';
@@ -32,7 +32,7 @@ const LoanDetailScreen = ({ route, navigation }) => {
   const { loanId } = route.params;
   const { theme } = useTheme();
   const { user } = useAuth();
-  const { getLoanById, markEMIAsPaid, loading } = useFirebase();
+  const { getLoanById, markEMIAsPaid, loading } = useLocalStorage();
 
   const [loan, setLoan] = useState(null);
   const [refreshing, setRefreshing] = useState(false);

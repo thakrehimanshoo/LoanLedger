@@ -8,8 +8,8 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useTheme } from '../../contexts/ThemeContext';
-import { useAuth } from '../../contexts/AuthContext';
-import useFirebase from '../../hooks/useFirebase';
+import { useAuth } from '../../contexts/AuthContextLocal';
+import useLocalStorage from '../../hooks/useLocalStorage';
 
 // Steps
 import Step1LoanDetails from './Step1LoanDetails';
@@ -31,7 +31,7 @@ const LoanCreationWizard = () => {
   const { theme } = useTheme();
   const navigation = useNavigation();
   const { user } = useAuth();
-  const { createLoan, loading } = useFirebase();
+  const { createLoan, loading } = useLocalStorage();
 
   const [currentStep, setCurrentStep] = useState(1);
   const [loanData, setLoanData] = useState({
