@@ -10,8 +10,8 @@ import {
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../../contexts/ThemeContext';
-import { useAuth } from '../../contexts/AuthContext';
-import useFirebase from '../../hooks/useFirebase';
+import { useAuth } from '../../contexts/AuthContextLocal';
+import useLocalStorage from '../../hooks/useLocalStorage';
 import Card from '../../components/common/Card';
 import Button from '../../components/common/Button';
 import LegalDisclaimer from '../../components/common/LegalDisclaimer';
@@ -31,7 +31,7 @@ const DashboardScreen = () => {
   const { theme } = useTheme();
   const navigation = useNavigation();
   const { user } = useAuth();
-  const { getUserMetrics, getActiveLoans, loading } = useFirebase();
+  const { getUserMetrics, getActiveLoans, loading } = useLocalStorage();
 
   const [metrics, setMetrics] = useState({
     totalLended: 0,
